@@ -25,4 +25,6 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
+  // Configuração para SPA - redireciona todas as rotas para index.html
+  base: '/',
 })

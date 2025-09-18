@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(false);
   }, []);
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (email: string, _password: string) => {
     // Simulação de login (substitua pela integração real do Firebase)
     const mockUser: User = {
       id: 'mock-user-id',
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(mockUser);
   };
 
-  const signUp = async (email: string, password: string, userData: Partial<User>) => {
+  const signUp = async (email: string, _password: string, userData: Partial<User>) => {
     // Simulação de cadastro
     const newUser: User = {
       id: `user-${Date.now()}`,

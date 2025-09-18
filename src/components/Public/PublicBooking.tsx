@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Calendar, Clock, User, Phone, Mail, Scissors, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Calendar, Clock, User, Scissors, CheckCircle } from 'lucide-react';
 import { format, addDays, isSameDay, startOfDay } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { usePublicAppointments } from '../../hooks/usePublicAppointments';
-import { Appointment, Service } from '../../types';
+import { Service } from '../../types';
 
 const services: Service[] = [
-  { id: '1', name: 'Corte', duration: 30, price: 25 },
-  { id: '2', name: 'Barba', duration: 30, price: 20 },
-  { id: '3', name: 'Corte + Barba', duration: 60, price: 40 },
-  { id: '4', name: 'Sobrancelha', duration: 15, price: 15 },
+  { id: '1', name: 'Corte', duration: 30, price: 25, barberId: 'barber1' },
+  { id: '2', name: 'Barba', duration: 30, price: 20, barberId: 'barber1' },
+  { id: '3', name: 'Corte + Barba', duration: 60, price: 40, barberId: 'barber1' },
+  { id: '4', name: 'Sobrancelha', duration: 15, price: 15, barberId: 'barber1' },
 ];
 
 const barberInfo = {
@@ -37,7 +37,7 @@ export const PublicBooking = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { appointments, createAppointment, getTimeSlots } = usePublicAppointments();
+  const { createAppointment, getTimeSlots } = usePublicAppointments();
 
   // Gerar próximos 30 dias disponíveis
   const getAvailableDates = () => {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from './useAuthSimple';
 import { Appointment, TimeSlot } from '../types';
 
-export const useAppointments = (barberId?: string, date?: Date) => {
+export const useAppointments = (barberId?: string) => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
@@ -19,10 +19,10 @@ export const useAppointments = (barberId?: string, date?: Date) => {
     const mockAppointments: Appointment[] = [
       {
         id: '1',
-        clientId: user.id,
-        clientName: user.name || 'Cliente Teste',
-        clientPhone: user.phone || '(11) 99999-9999',
-        clientEmail: user.email,
+        clientId: user?.id || 'mock-client-1',
+        clientName: user?.name || 'Cliente Teste',
+        clientPhone: user?.phone || '(11) 99999-9999',
+        clientEmail: user?.email || '',
         barberId: 'barber1',
         barberName: 'João Barbearia',
         service: 'Corte + Barba',
@@ -38,10 +38,10 @@ export const useAppointments = (barberId?: string, date?: Date) => {
       },
       {
         id: '2',
-        clientId: user.id,
-        clientName: user.name || 'Cliente Teste',
-        clientPhone: user.phone || '(11) 99999-9999',
-        clientEmail: user.email,
+        clientId: user?.id || 'mock-client-1',
+        clientName: user?.name || 'Cliente Teste',
+        clientPhone: user?.phone || '(11) 99999-9999',
+        clientEmail: user?.email || '',
         barberId: 'barber1',
         barberName: 'João Barbearia',
         service: 'Corte',

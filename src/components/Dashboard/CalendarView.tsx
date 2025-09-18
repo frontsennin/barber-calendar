@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Plus, Clock, User } from 'lucide-react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useAppointments } from '../../hooks/useAppointmentsSimple';
-import { useAuth } from '../../hooks/useAuthSimple';
-import { Appointment } from '../../types';
+// import { useAuth } from '../../hooks/useAuthSimple';
+// import { Appointment } from '../../types';
 import { NewAppointmentModal } from '../Appointment/NewAppointmentModal';
 
 export const CalendarView = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showNewAppointment, setShowNewAppointment] = useState(false);
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const { appointments, loading } = useAppointments();
 
   const monthStart = startOfMonth(currentDate);

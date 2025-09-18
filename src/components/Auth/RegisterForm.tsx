@@ -14,7 +14,7 @@ const schema = yup.object({
   confirmPassword: yup.string().oneOf([yup.ref('password')], 'Senhas não coincidem'),
 });
 
-type RegisterFormData = yup.InferType<typeof schema>;
+// type RegisterFormData = yup.InferType<typeof schema>;
 
 interface RegisterFormProps {
   onSwitchToLogin: () => void;
@@ -31,11 +31,11 @@ export const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormData>({
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: RegisterFormData) => {
+  const onSubmit = async (data: any) => {
     setIsLoading(true);
     setError('');
     

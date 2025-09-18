@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useAppointments } from '../../hooks/useAppointmentsSimple';
 import { useAuth } from '../../hooks/useAuthSimple';
-import { Appointment } from '../../types';
+// import { Appointment } from '../../types';
 
 export const AppointmentsView = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +14,7 @@ export const AppointmentsView = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'scheduled':
+      case 'pending':
         return 'bg-blue-100 text-blue-800';
       case 'confirmed':
         return 'bg-green-100 text-green-800';
@@ -31,7 +31,7 @@ export const AppointmentsView = () => {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'scheduled':
+      case 'pending':
         return 'Agendado';
       case 'confirmed':
         return 'Confirmado';
@@ -101,7 +101,7 @@ export const AppointmentsView = () => {
                 className="input-field pl-10"
               >
                 <option value="all">Todos os status</option>
-                <option value="scheduled">Agendado</option>
+                <option value="pending">Agendado</option>
                 <option value="confirmed">Confirmado</option>
                 <option value="completed">Concluído</option>
                 <option value="cancelled">Cancelado</option>
@@ -164,7 +164,7 @@ export const AppointmentsView = () => {
                     
                     {user?.role === 'barber' && appointment.status !== 'completed' && appointment.status !== 'cancelled' && (
                       <div className="flex gap-2">
-                        {appointment.status === 'scheduled' && (
+                        {appointment.status === 'pending' && (
                           <button
                             onClick={() => handleStatusChange(appointment.id, 'confirmed')}
                             className="px-3 py-1 text-sm bg-green-100 text-green-800 rounded-lg hover:bg-green-200 transition-colors"

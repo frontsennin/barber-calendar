@@ -7,7 +7,6 @@ import {
   onSnapshot, 
   addDoc, 
   updateDoc, 
-  deleteDoc, 
   doc,
   Timestamp 
 } from 'firebase/firestore';
@@ -15,7 +14,7 @@ import { db } from '../config/firebase';
 import { Appointment, TimeSlot } from '../types';
 import { useAuth } from './useAuthSimple';
 
-export const useAppointments = (barberId?: string, date?: Date) => {
+export const useAppointments = (barberId?: string) => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();

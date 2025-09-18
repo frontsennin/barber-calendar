@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { requestNotificationPermission, onMessageListener } from '../config/firebase';
-import { NotificationData } from '../types';
+// import { NotificationData } from '../types';
 
 export const useNotifications = () => {
   const [isSupported, setIsSupported] = useState(false);

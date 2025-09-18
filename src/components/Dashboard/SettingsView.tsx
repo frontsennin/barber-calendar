@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Settings, User, Bell, Calendar, Shield, Save } from 'lucide-react';
+import { User, Bell, Calendar, Shield, Save } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuthSimple';
 
 export const SettingsView = () => {
